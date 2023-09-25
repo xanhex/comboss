@@ -1,0 +1,32 @@
+{% extends 'base.html' %}
+{% block title %}Character{% endblock title %}
+{% block content %}
+  <div class="container p-4 text-main">
+    <div class="row">
+      <div class="col-sm-4 mb-3">
+        <img src="{{ url_for('static', filename=('img/characters/' + character.image)) }}"
+              class="img-fluid"
+              style="border-radius: 2.5%"
+              alt="...">
+      </div>
+      <div class="col-sm-8">
+        <h5>{{ character.name }}</h5>
+        <p><small class="meta">{{ character.game }}</small></p>
+        <p>{{ character.description }}</p>
+        <h6>Combo</h6>
+        <p><small class="meta">F-forward; B-back; U-up; D-down</br>
+          1-light punch; 2-heavy punch; 3-light kick; 4-heavy kick</br>
+          ENH-Enhanced Special Move
+        </small>
+        </p>
+        <ul class="list-group">
+          {% for combo in combos %}
+          <li class="list-group-item text-main bg-dark-sec">
+            <span class="badge label">{{ combo.game_version }}</span> <span style="color: yellow">[{{ combo.damage }}]</span> {{ combo.inputs }}
+          </li>
+          {% endfor %}
+        </ul>
+      </div>
+    </div>
+  </div>
+{% endblock %}

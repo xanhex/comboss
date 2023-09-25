@@ -1,0 +1,21 @@
+{% extends 'base.html' %}
+{% block title %}Characters{% endblock title %}
+{% block content %}
+  <div class="container p-4">
+    <div class="row">
+      {% for character in characters %}
+        <div class="col-6 col-sm-4 col-md-4 col-lg-2 mb-4">
+          <div class="card bg-dark-sec lg-w-50">
+            <img src="{{ url_for('static', filename=('img/characters/' + character.image)) }}"
+                  class="card-img-top p-2"
+                  style="border-radius: 5.5%"
+                  alt="...">
+            <div class="card-body py-1">
+              <h5 class="card-title fs-6"><a href="/{{ character.slug }}" class="dark_link">{{ character.name }}</a></h5>
+            </div>
+          </div>
+        </div>
+      {% endfor %}
+    </div>
+  </div>
+{% endblock %}
